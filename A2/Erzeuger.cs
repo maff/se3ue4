@@ -10,15 +10,20 @@ namespace A2
     {
         private ArrayList objects = new ArrayList();
         private Random random = new Random();
-        private Verbraucher verbraucher;
+        private Verbraucher.dlgErzeugen dlg;
 
-        public Erzeuger(Verbraucher _verbraucher)
+        public Erzeuger(Verbraucher.dlgErzeugen _dlg)
         {
-            this.verbraucher = _verbraucher;
-            printStatus();
+            this.dlg = _dlg;
         }
 
-        public void erzeuge()
+        public void Run()
+        {
+            this.printStatus();
+            this.erzeuge();
+        }
+
+        private void erzeuge()
         {
             int count = this.random.Next(1, 11);
             for (int i = 0; i < count; i++)
@@ -26,8 +31,7 @@ namespace A2
 
             this.printStatus(count);
 
-            Verbraucher.dlgErzeugen dlg = new Verbraucher.dlgErzeugen(this.verbraucher.mehrErzeugen);
-            if (dlg(count))
+            if (this.dlg(this.objects.Count))
                 this.erzeuge();
         }
 
@@ -44,6 +48,11 @@ namespace A2
                 Console.Write("#");
 
             Console.Write(" {0} neue Objekte erzeugt, {1} insgesamt\n", _newItems, this.objects.Count);
+        }
+
+        public void printSummary()
+        {
+            Console.WriteLine("[Erzeuger:]\t{0} Objekte erzeugt", this.objects.Count);
         }
     }
 }

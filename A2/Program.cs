@@ -24,10 +24,19 @@ namespace A2
 
             Console.WriteLine();
 
-            Verbraucher verbr = new Verbraucher(maxObjects);
-            Erzeuger erz = new Erzeuger(verbr);
-            erz.erzeuge();
+            Verbraucher verbraucher = new Verbraucher(maxObjects);
+            Verbraucher.dlgErzeugen dlg = new Verbraucher.dlgErzeugen(verbraucher.mehrErzeugen);
+            Erzeuger erzeuger = new Erzeuger(dlg);
+            erzeuger.Run();
 
+            Console.WriteLine();
+            Console.WriteLine("Ergebnisse");
+            Console.WriteLine("----------");
+
+            erzeuger.printSummary();
+            verbraucher.printSummary();
+
+            Console.WriteLine();
             Console.ReadLine();
         }
     }
