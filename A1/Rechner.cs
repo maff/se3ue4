@@ -9,7 +9,6 @@ namespace A1
     class Rechner
     {
         delegate int Operate();
-        Operate dlgMethod;
 
         private int op1 = 0, op2 = 0;
         private System.Collections.Hashtable table = new System.Collections.Hashtable();
@@ -20,11 +19,13 @@ namespace A1
             this.table.Add("-", new Operate(subtrahiere));
             this.table.Add("*", new Operate(multipliziere));
             this.table.Add("/", new Operate(dividiere));
+            this.table.Add("%", new Operate(berechneRest));
+            this.table.Add("^", new Operate(potenziere));
         }
 
         public int berechne(string _operation)
         {
-            dlgMethod = (Operate)this.table["test"];
+            Operate dlgMethod = (Operate) this.table[_operation];
             return dlgMethod();
         }
 
@@ -73,11 +74,17 @@ namespace A1
                 throw new ArgumentException("Operand 2 hat den Wert 0");
             return op1 / op2;
         }
+        
         public int berechneRest()
         {
             if (op2 == 0)
                 throw new ArgumentException("Operand 2 hat den Wert 0");
             return op1 % op2;
+        }
+
+        public int potenziere()
+        {
+            return (int) Math.Pow((double) op1, (double) op2);
         }
     }
 }

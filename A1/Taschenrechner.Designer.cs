@@ -39,6 +39,7 @@
             this.textBox_Operand1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button_Potenz = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Restwert
@@ -49,17 +50,17 @@
             this.button_Restwert.TabIndex = 21;
             this.button_Restwert.Text = "%";
             this.button_Restwert.UseVisualStyleBackColor = true;
-            this.button_Restwert.Click += new System.EventHandler(this.button_Restwert_Click);
+            this.button_Restwert.Click += new System.EventHandler(this.clickHandler);
             // 
             // button_Division
             // 
-            this.button_Division.Location = new System.Drawing.Point(173, 61);
+            this.button_Division.Location = new System.Drawing.Point(256, 36);
             this.button_Division.Name = "button_Division";
             this.button_Division.Size = new System.Drawing.Size(75, 23);
             this.button_Division.TabIndex = 20;
             this.button_Division.Text = "/";
             this.button_Division.UseVisualStyleBackColor = true;
-            this.button_Division.Click += new System.EventHandler(this.button_Division_Click);
+            this.button_Division.Click += new System.EventHandler(this.clickHandler);
             // 
             // button_Multiplikation
             // 
@@ -69,7 +70,7 @@
             this.button_Multiplikation.TabIndex = 19;
             this.button_Multiplikation.Text = "*";
             this.button_Multiplikation.UseVisualStyleBackColor = true;
-            this.button_Multiplikation.Click += new System.EventHandler(this.button_Multiplikation_Click);
+            this.button_Multiplikation.Click += new System.EventHandler(this.clickHandler);
             // 
             // button_Subtraktion
             // 
@@ -79,7 +80,7 @@
             this.button_Subtraktion.TabIndex = 18;
             this.button_Subtraktion.Text = "-";
             this.button_Subtraktion.UseVisualStyleBackColor = true;
-            this.button_Subtraktion.Click += new System.EventHandler(this.button_Subtraktion_Click);
+            this.button_Subtraktion.Click += new System.EventHandler(this.clickHandler);
             // 
             // button_Addition
             // 
@@ -89,7 +90,17 @@
             this.button_Addition.TabIndex = 17;
             this.button_Addition.Text = "+";
             this.button_Addition.UseVisualStyleBackColor = true;
-            this.button_Addition.Click += new System.EventHandler(this.button_Addition_Click);
+            this.button_Addition.Click += new System.EventHandler(this.clickHandler);
+            // 
+            // button_Potenz
+            // 
+            this.button_Potenz.Location = new System.Drawing.Point(173, 61);
+            this.button_Potenz.Name = "button_Potenz";
+            this.button_Potenz.Size = new System.Drawing.Size(75, 23);
+            this.button_Potenz.TabIndex = 22;
+            this.button_Potenz.Text = "^";
+            this.button_Potenz.UseVisualStyleBackColor = true;
+            this.button_Potenz.Click += new System.EventHandler(this.clickHandler);
             // 
             // label3
             // 
@@ -147,6 +158,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(354, 101);
+            this.Controls.Add(this.button_Potenz);
             this.Controls.Add(this.button_Restwert);
             this.Controls.Add(this.button_Division);
             this.Controls.Add(this.button_Multiplikation);
@@ -178,6 +190,7 @@
         private System.Windows.Forms.TextBox textBox_Operand1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button_Potenz;
     }
 }
 

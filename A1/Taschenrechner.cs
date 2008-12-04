@@ -19,6 +19,27 @@ namespace A1
             InitializeComponent();
         }
 
+        private void clickHandler(object sender, EventArgs e)
+        {
+            try
+            {
+                Button btn = (Button) sender;
+                textBox_Ergebnis.Text = this.myRechner.berechne(btn.Text).ToString();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Keine gültige Zahl im Eingabefeld eingegeben");
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Keine gültige Operationsart angegeben");
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show(ae.Message);
+            }
+        }
+
         private void textBox_Operand1_TextChanged(object sender, EventArgs e)
         {
             try
@@ -40,53 +61,6 @@ namespace A1
             catch (FormatException)
             {
                 MessageBox.Show("Keine gültige Zahl im Eingabefeld eingegeben");
-            }
-        }
-
-        private void button_Addition_Click(object sender, EventArgs e)
-        {
-            textBox_Ergebnis.Text = myRechner.addiere().ToString();
-        }
-
-        private void button_Subtraktion_Click(object sender, EventArgs e)
-        {
-            textBox_Ergebnis.Text = myRechner.subtrahiere().ToString();
-        }
-
-        private void button_Multiplikation_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Button btn = (Button) sender;
-                textBox_Ergebnis.Text = this.myRechner.berechne(btn.Text).ToString();
-            }
-            catch (NullReferenceException nre)
-            {
-                MessageBox.Show(nre.Message);
-            }
-        }
-
-        private void button_Division_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                textBox_Ergebnis.Text = myRechner.dividiere().ToString();
-            }
-            catch (ArgumentException ae)
-            {
-                MessageBox.Show(ae.Message);
-            }
-        }
-
-        private void button_Restwert_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                textBox_Ergebnis.Text = myRechner.berechneRest().ToString();
-            }
-            catch (ArgumentException ae)
-            {
-                MessageBox.Show(ae.Message);
             }
         }
     }
